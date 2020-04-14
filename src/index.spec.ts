@@ -6,4 +6,9 @@ describe('index.ts', (): void => {
     const current = read('./');
     expect(root.length).toBe(current.length);
   });
+
+  test('pathが 存在しないディレクトリ のとき、空の配列 を返す', () => {
+    const nullBox = read('thereIsNoDirectory');
+    expect(nullBox).toStrictEqual([]);
+  });
 });
