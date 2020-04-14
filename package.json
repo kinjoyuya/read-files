@@ -43,6 +43,7 @@
     },
     "testMatch": [
       "**.spec.ts"
-    ]
+    ],
+    "notify": true
   }
 }
