@@ -4,7 +4,8 @@
   "description": "read files recursively",
   "main": "./dist/index.js",
   "scripts": {
-    "read": "npx ts-node src/index.ts",
+    "read:ts": "npx ts-node 'src/index.ts'",
+    "read:js": "node './dist/index.js'",
     "lint": "npx eslint 'src/**/*.ts'"
   },
   "keywords": [],
