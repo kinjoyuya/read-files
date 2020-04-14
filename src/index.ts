@@ -1,10 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 
-export const read = (root, filter, files, prefix) => {
-  prefix = prefix || '';
-  files = files || [];
-  filter = filter || noDotFiles;
+const noDotFiles = (x: string): boolean => {
+  return x[0] !== '.';
+};
 
   const dir = path.join(root, prefix);
   if (!fs.existsSync(dir)) return files;
@@ -19,8 +18,4 @@ export const read = (root, filter, files, prefix) => {
   else files.push(prefix);
 
   return files;
-};
-
-const noDotFiles = (x) => {
-  return x[0] !== '.';
 };
