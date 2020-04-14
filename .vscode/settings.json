@@ -1,0 +1,8 @@
+{
+  "editor.formatOnSave": true,
+  "extensions.showRecommendationsOnlyOnDemand": false,
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}
