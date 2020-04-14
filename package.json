@@ -6,7 +6,8 @@
   "scripts": {
     "read:ts": "npx ts-node 'src/index.ts'",
     "read:js": "node './dist/index.js'",
-    "lint": "npx eslint 'src/**/*.ts'"
+    "lint": "npx eslint 'src/**/*.ts'",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
