@@ -1,9 +1,7 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
-module.exports = read;
-
-function read(root, filter, files, prefix) {
+export const read = (root, filter, files, prefix) => {
   prefix = prefix || '';
   files = files || [];
   filter = filter || noDotFiles;
@@ -21,8 +19,8 @@ function read(root, filter, files, prefix) {
   else files.push(prefix);
 
   return files;
-}
+};
 
-function noDotFiles(x) {
+const noDotFiles = (x) => {
   return x[0] !== '.';
-}
+};
