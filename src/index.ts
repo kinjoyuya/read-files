@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import { existsSync, statSync, readdirSync } from 'fs';
+import { join } from 'path';
 
 const noDotFiles = (x: string): boolean => {
   return x[0] !== '.';
@@ -8,15 +8,15 @@ const noDotFiles = (x: string): boolean => {
 type Filter = (path: string, index?: number, dir?: string) => boolean;
 
 export const read = (root: string, filter: Filter = noDotFiles, files: string[] = [], prefix = ''): string[] => {
-  const dir = path.join(root, prefix);
-  if (!fs.existsSync(dir)) return files;
-  if (fs.statSync(dir).isDirectory())
-    fs.readdirSync(dir)
+  const dir = join(root, prefix);
+  if (!existsSync(dir)) return files;
+  if (statSync(dir).isDirectory())
+    readdirSync(dir)
       .filter((name, index) => {
         return filter(name, index, dir);
       })
       .forEach((name) => {
-        read(root, filter, files, path.join(prefix, name));
+        read(root, filter, files, join(prefix, name));
       });
   else files.push(prefix);
 
