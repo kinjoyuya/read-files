@@ -12,10 +12,10 @@ export const read = (root: string, filter: Filter = noDotFiles, files: string[] 
   if (!fs.existsSync(dir)) return files;
   if (fs.statSync(dir).isDirectory())
     fs.readdirSync(dir)
-      .filter(function (name, index) {
+      .filter((name, index) => {
         return filter(name, index, dir);
       })
-      .forEach(function (name) {
+      .forEach((name) => {
         read(root, filter, files, path.join(prefix, name));
       });
   else files.push(prefix);
