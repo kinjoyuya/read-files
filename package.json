@@ -4,6 +4,7 @@
   "description": "read files recursively",
   "main": "index.js",
   "scripts": {
+    "read": "npx ts-node src/index.ts",
     "lint": "npx eslint 'src/**/*.ts'"
   },
   "keywords": [],
