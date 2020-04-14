@@ -7,7 +7,8 @@
     "read:ts": "npx ts-node 'src/index.ts'",
     "read:js": "node './dist/index.js'",
     "lint": "npx eslint 'src/**/*.ts'",
-    "test": "jest"
+    "test": "jest",
+    "build": "npx tsc"
   },
   "keywords": [],
   "author": "",
