@@ -2,7 +2,7 @@
   "name": "read-files",
   "version": "1.0.0",
   "description": "read files recursively",
-  "main": "index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "read": "npx ts-node src/index.ts",
     "lint": "npx eslint 'src/**/*.ts'"
