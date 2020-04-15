@@ -1,24 +1,14 @@
-import { existsSync, statSync, readdirSync } from 'fs';
+import { existsSync, readdirSync } from 'fs';
 import { join } from 'path';
 
-const noDotFiles = (x: string): boolean => {
-  return x[0] !== '.';
-};
-
-type Filter = (path: string, index?: number, dir?: string) => boolean;
-
-export const read = (root: string, filter: Filter = noDotFiles, files: string[] = [], prefix = ''): string[] => {
-  const dir = join(root, prefix);
-  if (!existsSync(dir)) return files;
-  if (statSync(dir).isDirectory())
-    readdirSync(dir)
-      .filter((name, index) => {
-        return filter(name, index, dir);
-      })
-      .forEach((name) => {
-        read(root, filter, files, join(prefix, name));
-      });
-  else files.push(prefix);
-
+export const read = (root = ''): string[] => {
+  const files: string[] = [];
+  if (!existsSync(root)) return files;
+  const readRecursive = (path: string) => {
+    const data = readdirSync(join(root, path), { withFileTypes: true });
+    data.filter((data) => data.isFile()).forEach((file) => files.push(join(path, file.name)));
+    data.filter((data) => data.isDirectory()).forEach((folder) => readRecursive(join(path, folder.name)));
+  };
+  readRecursive(root);
   return files;
 };
