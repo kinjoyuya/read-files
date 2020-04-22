@@ -6,7 +6,7 @@ export const read = (root = './'): string[] | [] => {
   root = root || './'; // "" => "./"
   const files: string[] = [];
   if (!existsSync(root)) return files;
-  const readRecursive = (path: string) => {
+  const readRecursive = (path: string): void => {
     const data = readdirSync(join(root, path), { withFileTypes: true });
     data.filter((data) => data.isFile()).forEach((file) => files.push(join(path, file.name)));
     data.filter((data) => data.isDirectory()).forEach((folder) => readRecursive(join(path, folder.name)));
