@@ -1,7 +1,9 @@
 import { existsSync, readdirSync } from 'fs';
 import { join } from 'path';
 
-export const read = (root = ''): string[] => {
+//** if no parameters => read current dir */
+export const read = (root = './'): string[] | [] => {
+  root = root || './'; // "" => "./"
   const files: string[] = [];
   if (!existsSync(root)) return files;
   const readRecursive = (path: string) => {
